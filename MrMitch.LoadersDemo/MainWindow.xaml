@@ -1,13 +1,16 @@
-﻿<Window x:Class="MrMitch.LoadersDemo.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:system="clr-namespace:System;assembly=mscorlib"
-        xmlns:loaders="clr-namespace:Loaders;assembly=MrMitch.Loaders"
-        mc:Ignorable="d"
-        d:DesignHeight="660"
-        Title="MainWindow" Height="660" Width="525">
+﻿<Window
+    x:Class="MrMitch.LoadersDemo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:loaders="clr-namespace:Loaders;assembly=MrMitch.Loaders"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    Title="MainWindow"
+    Width="525"
+    Height="660"
+    d:DesignHeight="660"
+    mc:Ignorable="d">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20,-10,20,20">
             <StackPanel.Resources>
@@ -17,7 +20,7 @@
                     <Setter Property="Margin" Value="0,20,0,10" />
                 </Style>
             </StackPanel.Resources>
-            <TextBlock Text="Google Chrome tab loader" Style="{StaticResource HeaderTextBlockStyle}" />
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Google Chrome tab loader" />
 
             <Grid x:Name="ChromeSettingsGrid">
                 <Grid.ColumnDefinitions>
@@ -32,38 +35,54 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Column="0" Grid.Row="0">
-                    Thickness : <Run Text="{Binding Value, StringFormat='F2', ElementName=ChromeThicknessSlider}" />
+                <TextBlock Grid.Row="0" Grid.Column="0">
+                    Thickness :<Run Text="{Binding Value, StringFormat='F2', ElementName=ChromeThicknessSlider}" />
                 </TextBlock>
-                <Slider x:Name="ChromeThicknessSlider" 
-                        Grid.Row="0" Grid.Column="1"
-                        Minimum="0.01" Maximum="100"
-                        Value="2" />
+                <Slider
+                    x:Name="ChromeThicknessSlider"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Maximum="100"
+                    Minimum="0.01"
+                    Value="2" />
 
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="Thickness unit : " />
-                <ComboBox Grid.Row="1" Grid.Column="1" SelectedIndex="0"
-                          x:Name="ThicknessUnitComboBox">
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Thickness unit : " />
+                <ComboBox
+                    x:Name="ThicknessUnitComboBox"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    SelectedIndex="0">
                     <system:String>Pixel</system:String>
                     <system:String>Percent</system:String>
                 </ComboBox>
 
                 <TextBlock Grid.Row="2" Grid.Column="0">
-                    Size : <Run Text="{Binding Value, StringFormat='F0', ElementName=ChromeSizeSlider}" />
+                    Size :<Run Text="{Binding Value, StringFormat='F0', ElementName=ChromeSizeSlider}" />
                 </TextBlock>
-                <Slider Grid.Row="2" Grid.Column="1" 
-                        x:Name="ChromeSizeSlider"
-                        Minimum="0" 
-                        Maximum="{Binding ActualWidth, ElementName=ChromeSettingsGrid}" 
-                        Value="40" />
+                <Slider
+                    x:Name="ChromeSizeSlider"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Maximum="{Binding ActualWidth, ElementName=ChromeSettingsGrid}"
+                    Minimum="0"
+                    Value="40" />
 
-                <TextBlock Text="Loading : " Grid.Row="3" Grid.Column="0"/>
-                <CheckBox IsThreeState="False"
-                          IsChecked="True"
-                          x:Name="ChromeLoadingCheckBox"
-                          Grid.Row="3" Grid.Column="1"/>
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Text="Loading : " />
+                <CheckBox
+                    x:Name="ChromeLoadingCheckBox"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    IsChecked="True"
+                    IsThreeState="False" />
             </Grid>
 
-            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <WrapPanel.Resources>
                     <Style TargetType="loaders:ChromeLoader">
                         <Setter Property="Margin" Value="20" />
@@ -79,13 +98,12 @@
 
                 <loaders:ChromeLoader Foreground="Orange" />
 
-                <loaders:ChromeLoader Foreground="DarkGray"
-                                      Fill="#11000000"/>
+                <loaders:ChromeLoader Fill="#11000000" Foreground="DarkGray" />
 
 
             </WrapPanel>
 
-            <TextBlock Text="Imgur image loader" Style="{StaticResource HeaderTextBlockStyle}" />
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Imgur image loader" />
             <Grid x:Name="ImgurSettingsGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -98,25 +116,32 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Column="0" Grid.Row="0">
-                    Rings thickness : <Run Text="{Binding Value,StringFormat='F0', ElementName=ImgurRingsThicknessSlider}" />
+                <TextBlock Grid.Row="0" Grid.Column="0">
+                    Rings thickness :<Run Text="{Binding Value, StringFormat='F0', ElementName=ImgurRingsThicknessSlider}" />
                 </TextBlock>
-                <Slider x:Name="ImgurRingsThicknessSlider" 
-                        Grid.Row="0" Grid.Column="1"
-                        Minimum="1" Maximum="100"
-                        TickFrequency="0.2"
-                        Value="2" />
+                <Slider
+                    x:Name="ImgurRingsThicknessSlider"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Maximum="100"
+                    Minimum="1"
+                    TickFrequency="0.2"
+                    Value="2" />
 
-                <TextBlock Text="Loading : " Grid.Row="2" Grid.Column="0"/>
-                <CheckBox IsThreeState="False"
-                          IsChecked="True"
-                          x:Name="ImgurLoadingCheckBox"
-                          Grid.Row="2" Grid.Column="1"/>
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="Loading : " />
+                <CheckBox
+                    x:Name="ImgurLoadingCheckBox"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    IsChecked="True"
+                    IsThreeState="False" />
             </Grid>
 
-            <Border Background="#181818"
-                    Margin="0,10">
-                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Border Margin="0,10" Background="#181818">
+                <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal">
                     <WrapPanel.Resources>
                         <Style TargetType="loaders:ImgurLoader">
                             <Setter Property="Margin" Value="20" />
@@ -135,7 +160,7 @@
             </Border>
 
 
-            <TextBlock Text="Google+ profile loader" Style="{StaticResource HeaderTextBlockStyle}" />
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Google+ profile loader" />
             <Grid x:Name="GooglePlusSettingsGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -150,47 +175,56 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Column="0" Grid.Row="0">
-                    Size : <Run Text="{Binding Value,StringFormat='F0', ElementName=GooglePlusSizeSlider}" />
+                <TextBlock Grid.Row="0" Grid.Column="0">
+                    Size :<Run Text="{Binding Value, StringFormat='F0', ElementName=GooglePlusSizeSlider}" />
                 </TextBlock>
-                <Slider x:Name="GooglePlusSizeSlider" 
-                        Grid.Row="0" Grid.Column="1"
-                        Minimum="1" Maximum="{Binding ActualWidth, ElementName=GooglePlusSettingsGrid}"
-                        TickFrequency="0.2"
-                        Value="50" />
-                <TextBlock Text="Loading : "
-                           Grid.Row="2" Grid.Column="0"/>
-                <CheckBox IsThreeState="False"
-                          IsChecked="True"
-                          x:Name="GooglePlusLoadingCheckBox"
-                          Grid.Row="2" Grid.Column="1"/>
+                <Slider
+                    x:Name="GooglePlusSizeSlider"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Maximum="{Binding ActualWidth, ElementName=GooglePlusSettingsGrid}"
+                    Minimum="1"
+                    TickFrequency="0.2"
+                    Value="50" />
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Text="Loading : " />
+                <CheckBox
+                    x:Name="GooglePlusLoadingCheckBox"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    IsChecked="True"
+                    IsThreeState="False" />
             </Grid>
 
-            <Border Background="#e5e5e5"
-                    Margin="0,10">
-                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <loaders:GooglePlusLoader Margin="20"
-                                              Color1="Red"
-                                              Color2="White"
-                                              Color3="Red"
-                                              Color4="White"
-                                              IsIndeterminate="{Binding IsChecked, ElementName=GooglePlusLoadingCheckBox}"
-                                              Height="{Binding Value, ElementName=GooglePlusSizeSlider}"
-                                              Width="{Binding Value, ElementName=GooglePlusSizeSlider}" />
+            <Border Margin="0,10" Background="#e5e5e5">
+                <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <loaders:GooglePlusLoader
+                        Width="{Binding Value, ElementName=GooglePlusSizeSlider}"
+                        Height="{Binding Value, ElementName=GooglePlusSizeSlider}"
+                        Margin="20"
+                        Color1="Red"
+                        Color2="White"
+                        Color3="Red"
+                        Color4="White"
+                        IsIndeterminate="{Binding IsChecked, ElementName=GooglePlusLoadingCheckBox}" />
 
-                    <loaders:GooglePlusLoader Margin="20" 
-                                              IsIndeterminate="{Binding IsChecked, ElementName=GooglePlusLoadingCheckBox}"
-                                              Height="{Binding Value, ElementName=GooglePlusSizeSlider}"
-                                              Width="{Binding Value, ElementName=GooglePlusSizeSlider}" />
+                    <loaders:GooglePlusLoader
+                        Width="{Binding Value, ElementName=GooglePlusSizeSlider}"
+                        Height="{Binding Value, ElementName=GooglePlusSizeSlider}"
+                        Margin="20"
+                        IsIndeterminate="{Binding IsChecked, ElementName=GooglePlusLoadingCheckBox}" />
 
-                    <loaders:GooglePlusLoader Color1="#CACACA"
-                                              Color2="#696969"
-                                              Color3="#CACACA"
-                                              Color4="#696969"
-                                              Margin="20"
-                                              IsIndeterminate="{Binding IsChecked, ElementName=GooglePlusLoadingCheckBox}"
-                                              Height="{Binding Value, ElementName=GooglePlusSizeSlider}"
-                                              Width="{Binding Value, ElementName=GooglePlusSizeSlider}" />
+                    <loaders:GooglePlusLoader
+                        Width="{Binding Value, ElementName=GooglePlusSizeSlider}"
+                        Height="{Binding Value, ElementName=GooglePlusSizeSlider}"
+                        Margin="20"
+                        Color1="#CACACA"
+                        Color2="#696969"
+                        Color3="#CACACA"
+                        Color4="#696969"
+                        IsIndeterminate="{Binding IsChecked, ElementName=GooglePlusLoadingCheckBox}" />
                 </WrapPanel>
             </Border>
 
